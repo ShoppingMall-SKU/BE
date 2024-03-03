@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import com.openMarket.backend.Security.SecurityConfig.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Setter
@@ -15,15 +17,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name; // 성명
+    private String name;
 
     private String password; //비번
 
-    private String phone; // ex)010-1234-5678
+    private String phone;
 
-    private String email; // id
+    private String email;
 
-    private String address; // 주소
+    private String address;
 
     @Enumerated(value = EnumType.STRING)
     private role role;
@@ -38,4 +40,5 @@ public class User {
     }
 
     private String refreshToken;
+
 }
