@@ -1,8 +1,8 @@
 package com.openMarket.backend.Ordering;
 
 
-import com.openMarket.backend.JWT.JwtService;
-import com.openMarket.backend.Security.SecurityConfig;
+
+//import com.openMarket.backend.Security.SecurityConfig;
 import com.openMarket.backend.User.User;
 import com.openMarket.backend.User.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +22,7 @@ public class OrderingController {
     private final OrderingService orderingService;
     private final UserRepository userRepository;
 
+
     @PostMapping("/create") // 결제 전 정보 기입.
     public void create(HttpServletRequest request, @RequestParam OrderingInfoDTO infoDTO) {
         User user = userRepository.findByEmail(request.getUserPrincipal().getName()).orElse(null);
@@ -34,6 +35,8 @@ public class OrderingController {
                 infoDTO.getMessage()
         );
     }
+
+    
 
     @GetMapping("/list/{email}")
     public ResponseEntity<List<OrderingListDTO>> getListByUser(@PathVariable String email){

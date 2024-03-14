@@ -6,6 +6,7 @@ import com.openMarket.backend.User.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,8 +26,18 @@ public class CartService {
     }
 
     // Read Cart
-    public List<Cart> getList(int id){
-        return this.cartRepository.findByUserId(id);
+    public List<CartUserInfoDto> getList(int id){ // test 완
+        List<Cart> cartList = cartRepository.findByUserId(id);
+        List<CartUserInfoDto> cartUserInfoDtoList = new ArrayList<>();
+
+        for (Cart cart : cartList){
+            CartUserInfoDto cartUserInfoDto = new CartUserInfoDto();
+            cartUserInfoDto.setUserEmail(cart.getUser().getEmail());
+            cartUserInfoDto.setProduct(cart.getProduct());
+            cartUserInfoDto.setQuantity(cart.getQuantity());
+            cartUserInfoDtoList.add(cartUserInfoDto);
+        }
+        return cartUserInfoDtoList;
     }
 
     // cartId로 Cart조회

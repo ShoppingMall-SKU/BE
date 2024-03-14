@@ -22,8 +22,8 @@ public class CartController {
     }
 
     @GetMapping("/user/{userId}") // test완
-    public ResponseEntity<List<Cart>> getCartListByUserId(@PathVariable int userId){
-        List<Cart> cartList = cartService.getList(userId);
+    public ResponseEntity<List<CartUserInfoDto>> getCartListByUserId(@PathVariable int userId){
+        List<CartUserInfoDto> cartList = cartService.getList(userId);
         return ResponseEntity.ok(cartList);
     }
     // 수량 변경 메소드
