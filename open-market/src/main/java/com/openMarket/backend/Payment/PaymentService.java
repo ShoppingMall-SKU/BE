@@ -53,9 +53,9 @@ public class PaymentService {
         return this.paymentRepository.findPaymentByOrderingId(orderingId);
     }
     // userId로 Payment list 반환 -> 쿼리문 작성 (Test 필요)
-    public List<Payments> getPaymentListByUserId(int userId){
-        return this.paymentRepository.findPaymentByUserId(userId);
-    }
+//    public List<Payments> getPaymentListByUserId(int userId){
+//        return this.paymentRepository.findPaymentByUserId(userId);
+//    }
 
     // Payment Update -> 필요한가??
     public void modifiedPayment(Payments payments, String method, int amount, Ordering ordering){

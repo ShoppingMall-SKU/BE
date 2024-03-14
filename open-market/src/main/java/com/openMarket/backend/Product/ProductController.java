@@ -20,6 +20,7 @@ public class ProductController {
         List<Product> productList = this.productService.getAll();
         return ResponseEntity.ok(productList);
     }
+
     @GetMapping("/list/{name}") // 검색기능 test완
     public ResponseEntity<List<Product>> getProductByName(@PathVariable String name) {
         List<Product> product = productService.searchByName(name);

@@ -2,6 +2,7 @@ package com.openMarket.backend.User;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -15,15 +16,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name; // 성명
+    private String name;
 
     private String password; //비번
 
-    private String phone; // ex)010-1234-5678
+    private String phone;
 
-    private String email; // id
+    private String email;
 
-    private String address; // 주소
+    private String address;
 
     @Enumerated(value = EnumType.STRING)
     private role role;
@@ -38,4 +39,22 @@ public class User {
     }
 
     private String refreshToken;
+
+    //private providerType providerType;
+
+    public enum providerType {
+        GOOGLE("구글"),
+        NORMAL("일반");
+
+        private String pt;
+
+        providerType(String providerType) {
+            this.pt = providerType;
+        }
+
+        public String getProviderType() {
+            return this.pt;
+        }
+    }
+
 }

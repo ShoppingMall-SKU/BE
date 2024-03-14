@@ -21,7 +21,6 @@ import java.util.List;
 public class OrderingController {
     private final OrderingService orderingService;
     private final UserRepository userRepository;
-    private final JwtService jwtService;
 
     @PostMapping("/create") // 결제 전 정보 기입.
     public void create(HttpServletRequest request, @RequestParam OrderingInfoDTO infoDTO) {
