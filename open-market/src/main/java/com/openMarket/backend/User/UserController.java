@@ -42,7 +42,6 @@ public class UserController {
         return ResponseEntity.ok(userService.readByName(name));
     }
 
-
     @GetMapping("/redis/check")
     public void checkRedis(HttpServletRequest request) {
         userService.checkRedisValue(request);
@@ -56,8 +55,10 @@ public class UserController {
                 userLoginDTO.getPassword()
         );
         response.setHeader("Authorization", "Bearer " + accessToken);
-        return ResponseEntity.ok("login success");
+        log.info(accessToken);
+        return ResponseEntity.ok("success");
     }
+
     @GetMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
         userService.logout(request);

@@ -46,7 +46,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String token = resolveToken(request);
         log.info("uri : {}", request.getRequestURI());
 
-        if (request.getRequestURI().equals(NO_CHECK_URL) || request.getRequestURI().equals(NO_CHECK_URL2) || request.getRequestURI().contains(NO_CHECK_URL3)){
+        if (request.getRequestURI().equals(NO_CHECK_URL) || request.getRequestURI().equals(NO_CHECK_URL2) ){
             filterChain.doFilter(request, response);
         }
         else {

@@ -50,42 +50,19 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/h2-console/**","/static/**").permitAll()
-                                .requestMatchers("/api/product/**").permitAll()
-                                //.requestMatchers("/api/product/**").permitAll()
-                                .requestMatchers("/api/user/login").permitAll()
-                                .requestMatchers("/api/user/login/social").permitAll()
-                                .requestMatchers("/oauth2/code/google").permitAll()
-                                .requestMatchers("/oauth2/callback").permitAll()
+                                .requestMatchers("/","/css/**","/images/**","/js/**","/favicon.ico","/static/**").permitAll()
+                                .requestMatchers("/**").permitAll()
+
+
                                 .anyRequest().authenticated()
                 )
-
-
-//                .oauth2Login( o -> o.defaultSuccessUrl("/oauth2/code/google")
-//                        .userInfoEndpoint(userService -> userService.userService(oAuth2UserService)))
 
 
                 .addFilterAfter(new JwtFilter(jwtService, redisConfig), UsernamePasswordAuthenticationFilter.class)
                 .cors(cors -> cors.configurationSource(request -> corsConfigurationSource().getCorsConfiguration(request)));
 
-
         return http.build();
     }
-
-//    @Bean
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .formLogin(AbstractHttpConfigurer::disable)
-//                .httpBasic(AbstractHttpConfigurer::disable)
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .sessionManagement(httpSecuritySessionManagementConfigurer ->
-//                        httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//
-//                .oauth2Login( o -> o.defaultSuccessUrl("/oauth2/code/google")
-//                        .userInfoEndpoint(userService -> userService.userService(oAuth2UserService)));
-//
-//
-//    }
 
 
     @Bean

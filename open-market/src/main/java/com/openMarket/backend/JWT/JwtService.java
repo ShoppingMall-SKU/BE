@@ -56,6 +56,7 @@ public class JwtService {
 
 
         log.info("토큰 발급 성공 !");
+        log.info(accessToken);
 
         return JwtToken.builder()
                 .grantType("Bearer")
